@@ -1,0 +1,11 @@
+*.idea
+*.iml
+*.project
+.settings/
+*.classpath
+target/
+build/
+Servers/
+diamond_config_data.log
+*.svn
+*.metadata
