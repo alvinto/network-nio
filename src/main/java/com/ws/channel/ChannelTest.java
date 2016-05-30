@@ -45,6 +45,22 @@ public class ChannelTest {
         }catch (IOException e) {
             e.printStackTrace();
         }
+
+        //从通道到通道
+        try {
+            RandomAccessFile fromFile = new RandomAccessFile("fromFile.txt", "rw");
+            FileChannel fromChannel = fromFile.getChannel();
+            RandomAccessFile toFile = new RandomAccessFile("toFile.txt", "rw");
+            FileChannel toChannel = toFile.getChannel();
+            long position = 0;
+            long count = fromChannel.size();
+            //从源通道中读取到目标通道
+            toChannel.transferFrom(fromChannel,position,count);
+            //从源通道中读到目标通道中
+            fromChannel.transferTo(position,count,toChannel);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

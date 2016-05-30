@@ -9,10 +9,10 @@ import java.nio.channels.FileChannel;
 
 /**
  * Buffer基本用法
- * 写入数据到Buffer
- * 调用flip()方法
- * 从Buffer中读取数据
- * 调用clear()方法或者compact()方法
+ * 1、写入数据到Buffer
+ * 2、调用flip()方法
+ * 3、从Buffer中读取数据
+ * 4、调用clear()方法或者compact()方法
  * Created by alvin on 2016/5/24.
  */
 public class BufferTest {
@@ -31,7 +31,7 @@ public class BufferTest {
                 buffer.flip();
                 //告知在当前位置和限制之间是否有元素。
                 while(buffer.hasRemaining()){
-                    System.out.print( (char)buffer.get());//读取此缓冲区当前位置的字节，然后该位置递增
+                    System.out.print( buffer.get());//读取此缓冲区当前位置的字节，然后该位置递增
                 }
                 buffer.clear();//清除此缓冲区。将位置设置为 0，将限制设置为容量，并丢弃标记
                 bytesReader = fileChannel.read(buffer);
